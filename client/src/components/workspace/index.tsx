@@ -10,7 +10,7 @@ function WorkSpace() {
 
     return (
         <div
-            className="absolute left-0 top-0 w-full max-w-full flex-grow overflow-x-hidden md:static"
+            className="glass-effect absolute left-0 top-0 w-full max-w-full flex-grow overflow-x-hidden rounded-2xl m-2 md:static md:m-4"
             style={{ height: viewHeight }}
         >
             {activityState === ACTIVITY_STATE.DRAWING ? (

@@ -1,43 +1,41 @@
+import { useAppContext } from "@/context/AppContext"
+import { USER_STATUS } from "@/types/user"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 function ConnectionStatusPage() {
-    return (
-        <div className="flex h-screen min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
-            <ConnectionError />
-        </div>
-    )
-}
-
-const ConnectionError = () => {
+    const { status, setStatus } = useAppContext()
     const navigate = useNavigate()
-    const reloadPage = () => {
-        window.location.reload()
-    }
 
-    const gotoHomePage = () => {
-        navigate("/")
-    }
+    useEffect(() => {
+        if (status === USER_STATUS.DISCONNECTED) {
+            navigate("/")
+        }
+    }, [status, navigate, setStatus])
 
     return (
-        <>
-            <span className="whitespace-break-spaces text-lg font-medium text-slate-300">
-                Oops! Something went wrong. Please try again
-            </span>
-            <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex h-screen w-full items-center justify-center">
+            <div className="glass-effect flex flex-col items-center justify-center rounded-2xl p-8 shadow-2xl">
+                <div className="mb-6">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-xl opacity-30 animate-pulse-glow"></div>
+                        <div className="relative h-16 w-16 animate-spin rounded-full border-4 border-white/20 border-t-purple-500"></div>
+                    </div>
+                </div>
+                <h2 className="gradient-text text-2xl font-bold mb-2">
+                    Connection Failed
+                </h2>
+                <p className="text-center text-white/70 mb-4">
+                    Unable to connect to the server. Please check your internet connection.
+                </p>
                 <button
-                    className="mr-4 rounded-md bg-primary px-8 py-2 font-bold text-black"
-                    onClick={reloadPage}
+                    onClick={() => navigate("/")}
+                    className="rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 text-white font-semibold transition-all duration-300 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg hover:shadow-purple-500/25 glow-effect-hover"
                 >
                     Try Again
                 </button>
-                <button
-                    className="rounded-md bg-primary px-8 py-2 font-bold text-black"
-                    onClick={gotoHomePage}
-                >
-                    Go to HomePage
-                </button>
             </div>
-        </>
+        </div>
     )
 }
 

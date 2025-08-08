@@ -69,15 +69,18 @@ function FileTab() {
 
     return (
         <div
-            className="flex h-[50px] w-full select-none gap-2 overflow-x-auto p-2 pb-0"
+            className="flex h-[60px] w-full select-none gap-2 overflow-x-auto p-3 pb-0"
             ref={fileTabRef}
         >
             {openFiles.map((file) => (
                 <span
                     key={file.id}
                     className={cn(
-                        "flex w-fit cursor-pointer items-center rounded-t-md px-2 py-1 text-white",
-                        { "bg-darkHover": file.id === activeFile?.id },
+                        "flex w-fit cursor-pointer items-center rounded-t-xl px-4 py-2 text-white transition-all duration-300 hover:bg-white/10",
+                        { 
+                            "bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-white/20 backdrop-blur-sm": file.id === activeFile?.id,
+                            "hover:scale-105": file.id !== activeFile?.id
+                        },
                     )}
                     onClick={() => changeActiveFile(file.id)}
                 >
@@ -87,13 +90,13 @@ function FileTab() {
                         className="mr-2 min-w-fit"
                     />
                     <p
-                        className="flex-grow cursor-pointer overflow-hidden truncate"
+                        className="flex-grow cursor-pointer overflow-hidden truncate font-medium"
                         title={file.name}
                     >
                         {file.name}
                     </p>
                     <IoClose
-                        className="ml-3 inline rounded-md hover:bg-darkHover"
+                        className="ml-3 inline rounded-lg p-1 transition-all duration-300 hover:bg-white/20 hover:scale-110"
                         size={20}
                         onClick={() => closeFile(file.id)}
                     />

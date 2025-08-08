@@ -20,11 +20,14 @@ function GitHubCorner() {
                 width="150"
                 height="100"
                 viewBox="0 0 250 250"
-                className="absolute right-0 top-0 z-10 border-none bg-primary text-gray-900 dark:text-gray-100"
+                className="absolute right-0 top-0 z-10 border-none glass-effect text-gray-900 dark:text-gray-100"
                 aria-hidden="true"
                 style={{
-                    color: "#151513",
+                    color: "#ffffff",
                     transform: "rotate(45deg) translate(12%,-80%) scale(0.8)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    borderRadius: "8px",
                 }}
             >
                 <g

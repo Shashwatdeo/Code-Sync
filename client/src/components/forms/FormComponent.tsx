@@ -89,35 +89,53 @@ const FormComponent = () => {
     }, [currentUser, location.state?.redirect, navigate, setStatus, socket, status])
 
     return (
-        <div className="flex w-full max-w-[500px] flex-col items-center justify-center gap-4 p-4 sm:w-[500px] sm:p-8">
-            <img src={logo} alt="Logo" className="w-full"/>
+        <div className="glass-effect flex w-full max-w-[500px] flex-col items-center justify-center gap-6 rounded-2xl p-8 shadow-2xl backdrop-blur-md">
+            <div className="relative mb-4">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-xl opacity-30 animate-pulse-glow"></div>
+                <img src={logo} alt="Logo" className="relative w-full"/>
+            </div>
+            
+            <div className="w-full space-y-2">
+                <h2 className="gradient-text text-center text-2xl font-bold mb-6">
+                    Join Code Sync
+                </h2>
+                <p className="text-center text-white/70 mb-6">
+                    Collaborate in real-time with your team
+                </p>
+            </div>
+            
             <form onSubmit={joinRoom} className="flex w-full flex-col gap-4">
-                <input
-                    type="text"
-                    name="roomId"
-                    placeholder="Room Id"
-                    className="w-full rounded-md border border-gray-500 bg-darkHover px-3 py-3 focus:outline-none"
-                    onChange={handleInputChanges}
-                    value={currentUser.roomId}
-                />
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    className="w-full rounded-md border border-gray-500 bg-darkHover px-3 py-3 focus:outline-none"
-                    onChange={handleInputChanges}
-                    value={currentUser.username}
-                    ref={usernameRef}
-                />
+                <div className="relative">
+                    <input
+                        type="text"
+                        name="roomId"
+                        placeholder="Room Id"
+                        className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-4 text-white placeholder-white/50 backdrop-blur-sm transition-all duration-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                        onChange={handleInputChanges}
+                        value={currentUser.roomId}
+                    />
+                </div>
+                <div className="relative">
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-4 text-white placeholder-white/50 backdrop-blur-sm transition-all duration-300 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                        onChange={handleInputChanges}
+                        value={currentUser.username}
+                        ref={usernameRef}
+                    />
+                </div>
                 <button
                     type="submit"
-                    className="mt-2 w-full rounded-md bg-primary px-8 py-3 text-lg font-semibold text-black"
+                    className="mt-4 w-full rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg hover:shadow-purple-500/25 glow-effect-hover"
                 >
-                    Join
+                    Join Room
                 </button>
             </form>
+            
             <button
-                className="cursor-pointer select-none underline"
+                className="cursor-pointer select-none text-white/70 underline transition-all duration-300 hover:text-white hover:scale-105"
                 onClick={createNewRoomId}
             >
                 Generate Unique Room Id
