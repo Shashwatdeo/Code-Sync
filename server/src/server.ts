@@ -308,11 +308,17 @@ io.on("connection", (socket) => {
 			const roomId = await getRoomId(socket.id)
 			if (!roomId) return
 			
+			// Validate message structure
+			if (!message || !message.message || !message.username) {
+				console.error("Invalid message structure:", message)
+				return
+			}
+			
 			// Save message to database
 			await MessageService.saveMessage({
 				roomId,
 				username: message.username,
-				content: message.content
+				content: message.message
 			})
 			
 			socket.broadcast

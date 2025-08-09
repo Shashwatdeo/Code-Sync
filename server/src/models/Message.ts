@@ -12,8 +12,7 @@ export interface IMessage extends Document {
 const MessageSchema: Schema = new Schema({
   roomId: {
     type: String,
-    required: true,
-    index: true
+    required: true
   },
   username: {
     type: String,

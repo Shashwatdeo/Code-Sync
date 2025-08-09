@@ -10,8 +10,7 @@ export interface IDrawing extends Document {
 const DrawingSchema: Schema = new Schema({
   roomId: {
     type: String,
-    required: true,
-    index: true
+    required: true
   },
   snapshot: {
     type: Schema.Types.Mixed,

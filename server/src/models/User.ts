@@ -21,8 +21,7 @@ const UserSchema: Schema = new Schema({
   },
   roomId: {
     type: String,
-    required: true,
-    index: true
+    required: true
   },
   status: {
     type: String,
